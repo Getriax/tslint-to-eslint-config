@@ -4,7 +4,7 @@ describe("collectTSLintRulesets", () => {
     it("includes mapped ESLint extensions for a full TSLint extension when it exists", () => {
         const tslint = {
             full: {
-                extends: ["tslint:recommended"],
+                extends: ["tslint:recommended", "tslint-react"],
             },
             raw: {},
         };
@@ -14,6 +14,7 @@ describe("collectTSLintRulesets", () => {
         expect(extensions).toEqual([
             "plugin:@typescript-eslint/recommended",
             "plugin:@typescript-eslint/recommended-requiring-type-checking",
+            "plugin:react/recommended",
         ]);
     });
 
@@ -21,7 +22,7 @@ describe("collectTSLintRulesets", () => {
         const tslint = {
             full: {},
             raw: {
-                extends: ["tslint:recommended"],
+                extends: ["tslint:recommended", "tslint-react"],
             },
         };
 
@@ -30,6 +31,7 @@ describe("collectTSLintRulesets", () => {
         expect(extensions).toEqual([
             "plugin:@typescript-eslint/recommended",
             "plugin:@typescript-eslint/recommended-requiring-type-checking",
+            "plugin:react/recommended",
         ]);
     });
 
